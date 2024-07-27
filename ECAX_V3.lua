@@ -1,4 +1,4 @@
--- Cresansa ScreenGui and ImageButton if not already created
+-- Create ScreenGui and ImageButton if not already created
 local player = game.Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
@@ -95,7 +95,7 @@ imageButton.MouseButton1Click:Connect(onButtonClick)
 print("Script executed, by PlayerExploits...")
 
 -- Load the library
-local ECAX = loadstring(game:HttpGet("https://raw.githubusercontent.com/RScripter/-ECAX-/main/OrionRed.lua"))()
+local ECAX = loadstring(game:HttpGet("https://raw.githubusercontent.com/RScripter/ORION-BLUE-THEME/main/source.lua"))()
 
 local ECAX = ECAX:MakeWindow({Name = "ECAX V3", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 
@@ -260,7 +260,7 @@ local coolthingy2 = universal:AddSection({
 	Name = "_________________________________________________________________________"
 })
 
-local Tab3 = SANS:MakeTab({
+local Tab3 = ECAX:MakeTab({
    Name = "Games",
    Icon = "games",
    PremiumOnly = false
@@ -419,4 +419,28 @@ FE:AddButton({
 
 local Section2 = FE:AddSection({
 	Name = "_________________________________________________________________________"
+})
+
+local ScriptHubs = ECAX:MakeTab({
+	Name = "Scripthubs",
+	Icon = "scriptlist",
+	PremiumOnly = false
+})
+
+local Section = ScriptHubs:AddSection({
+	Name = "Made By PlayerExploits"
+})
+
+ScriptHubs:AddButton({
+	Name = "•ECAX V3•",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/RScripter/-ECAX-/main/ECAX_V3.lua"))()
+  	end    
+})
+
+ScriptHubs:AddButton({
+	Name = "•SANS HUB•",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/RScripter/ORION-BLUE-THEME/main/Scripthub/Sans%20hub"))()
+  	end    
 })
