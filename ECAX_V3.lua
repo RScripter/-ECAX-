@@ -46,51 +46,59 @@ end
 -- Connect the button click event to the function
 imageButton.MouseButton1Click:Connect(onButtonClick)
 
--- Create a ScreenGui and ImageButton if not already created
-local player = game.Players.LocalPlayer
-local playerGui = player:WaitForChild("PlayerGui")
+-- Create a function to create the GUI and button
+local function createButton()
+    -- Create and configure ScreenGui
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.Name = "LeftSideToggleButtonGui"
+    screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
--- Create and configure ScreenGui
-local screenGui = Instance.new("ScreenGui")
-screenGui.Name = "LeftSideToggleButtonGui"
-screenGui.Parent = playerGui
+    -- Create and configure ImageButton
+    local imageButton = Instance.new("ImageButton")
+    imageButton.Size = UDim2.new(0, 50, 0, 50) -- Smaller size for the button
+    imageButton.AnchorPoint = Vector2.new(0, 0.5) -- Anchor to the left center
+    imageButton.Position = UDim2.new(0, 10, 0.5, 0) -- Positioned on the left side, slightly inset
+    imageButton.Image = "rbxassetid://18671373340" -- Your new image ID
+    imageButton.Parent = screenGui
 
--- Create and configure ImageButton
-local imageButton = Instance.new("ImageButton")
-imageButton.Size = UDim2.new(0, 50, 0, 50) -- Smaller size for the button
-imageButton.AnchorPoint = Vector2.new(0, 0.5) -- Anchor to the left center
-imageButton.Position = UDim2.new(0, 10, 0.5, 0) -- Positioned on the left side, slightly inset
-imageButton.Image = "rbxassetid://18671373340" -- Your new image ID
-imageButton.Parent = screenGui
+    -- Create and configure UICorner to make the button slightly rounded
+    local uiCorner = Instance.new("UICorner")
+    uiCorner.CornerRadius = UDim.new(0.2, 0) -- Slightly rounded corners
+    uiCorner.Parent = imageButton
 
--- Create and configure UICorner to make the button slightly rounded
-local uiCorner = Instance.new("UICorner")
-uiCorner.CornerRadius = UDim.new(0.2, 0) -- Slightly rounded corners
-uiCorner.Parent = imageButton
+    -- Create and configure UIStroke to add a red border
+    local uiStroke = Instance.new("UIStroke")
+    uiStroke.Thickness = 2 -- Thickness of the border
+    uiStroke.Color = Color3.fromRGB(255, 0, 0) -- Red color
+    uiStroke.Parent = imageButton
 
--- Create and configure UIStroke to add a cyan border
-local uiStroke = Instance.new("UIStroke")
-uiStroke.Thickness = 2 -- Thickness of the border
-uiStroke.Color = Color3.fromRGB(255, 0, 0) -- Cyan color
-uiStroke.Parent = imageButton
-
-local toggleState = false
-local function onButtonClick()
-    if toggleState == false then
-        if gethui():FindFirstChild("Orion") then
-    gethui().Orion.Enabled = not gethui().Orion.Enabled
-end
-		UIHidden = true
-    else
-        toggleState = false
-        if gethui():FindFirstChild("Orion") then
-    gethui().Orion.Enabled = not gethui().Orion.Enabled
-end
+    local toggleState = false
+    local function onButtonClick()
+        if toggleState == false then
+            if gethui():FindFirstChild("Orion") then
+                gethui().Orion.Enabled = not gethui().Orion.Enabled
+            end
+            UIHidden = true
+        else
+            toggleState = false
+            if gethui():FindFirstChild("Orion") then
+                gethui().Orion.Enabled = not gethui().Orion.Enabled
+            end
+        end
     end
+
+    -- Connect the button click event to the function
+    imageButton.MouseButton1Click:Connect(onButtonClick)
 end
 
--- Connect the button click event to the function
-imageButton.MouseButton1Click:Connect(onButtonClick)
+-- Create the button for the first time
+createButton()
+
+-- Recreate the button whenever the character is added (reset)
+local player = game.Players.LocalPlayer
+player.CharacterAdded:Connect(function()
+    createButton()
+end)
 
 print("Script executed, by PlayerExploits...")
 
