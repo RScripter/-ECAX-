@@ -153,6 +153,8 @@ Tab:AddLabel("Added Other")
 Tab:AddLabel("Added Universal")
 Tab:AddLabel("Added Games")
 Tab:AddLabel("Added Filtering Enabled")
+Tab:AddLabel("Added Toggle UI")
+Tab:AddLabel("Added Transparency Of The UI")
 
 local coolthingy5 = Tab:AddSection({
 	Name = "_________________________________________________________________________"
