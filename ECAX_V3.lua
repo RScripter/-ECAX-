@@ -95,7 +95,7 @@ imageButton.MouseButton1Click:Connect(onButtonClick)
 print("Script executed, by PlayerExploits...")
 
 -- Load the library
-local ECAX = loadstring(game:HttpGet("https://raw.githubusercontent.com/RScripter/ORION-BLUE-THEME/main/source.lua"))()
+local ECAX = loadstring(game:HttpGet("https://raw.githubusercontent.com/RScripter/-ECAX-/main/OrionRed.lua"))()
 
 local ECAX = ECAX:MakeWindow({Name = "ECAX V3", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 
