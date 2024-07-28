@@ -402,6 +402,17 @@ local Section1 = Tab3:AddSection({
 	Name = "_________________________________________________________________________"
 })
 
+local SectionSlapBattles = Tab3:AddSection({
+   Name = "Slap Battles"
+})
+
+Tab3: AddButton({
+	Name = "Slap Battles Script Hub That Exists",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/robloxsuckslikereallydude/1-Line-Scripts/main/Slap%20Battles"))()
+  	end    
+})
+
 local FE = ECAX:MakeTab({
    Name = "Filtering Enabled",
    Icon = "filteringenabled",
@@ -423,6 +434,13 @@ FE:AddButton({
 	Name = "FE Script Hub 2",
 	Callback = function()
       		loadstring(game:HttpGet('https://raw.githubusercontent.com/Dvrknvss/UniversalFEScriptHub/main/Script'))()
+  	end    
+})
+
+FE:AddButton({
+	Name = "Genesis Fe",
+	Callback = function()
+      		loadstring(game:HttpGet('https://raw.githubusercontent.com/RScripter/-ECAX-HUB-/main/Genesis%20Fe'))()
   	end    
 })
 
