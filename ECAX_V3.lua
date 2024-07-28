@@ -46,59 +46,51 @@ end
 -- Connect the button click event to the function
 imageButton.MouseButton1Click:Connect(onButtonClick)
 
--- Create a function to create the GUI and button
-local function createButton()
-    -- Create and configure ScreenGui
-    local screenGui = Instance.new("ScreenGui")
-    screenGui.Name = "LeftSideToggleButtonGui"
-    screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+-- Create a ScreenGui and ImageButton if not already created
+local player = game.Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
 
-    -- Create and configure ImageButton
-    local imageButton = Instance.new("ImageButton")
-    imageButton.Size = UDim2.new(0, 50, 0, 50) -- Smaller size for the button
-    imageButton.AnchorPoint = Vector2.new(0, 0.5) -- Anchor to the left center
-    imageButton.Position = UDim2.new(0, 10, 0.5, 0) -- Positioned on the left side, slightly inset
-    imageButton.Image = "rbxassetid://18671373340" -- Your new image ID
-    imageButton.Parent = screenGui
+-- Create and configure ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "LeftSideToggleButtonGui"
+screenGui.Parent = playerGui
 
-    -- Create and configure UICorner to make the button slightly rounded
-    local uiCorner = Instance.new("UICorner")
-    uiCorner.CornerRadius = UDim.new(0.2, 0) -- Slightly rounded corners
-    uiCorner.Parent = imageButton
+-- Create and configure ImageButton
+local imageButton = Instance.new("ImageButton")
+imageButton.Size = UDim2.new(0, 50, 0, 50) -- Smaller size for the button
+imageButton.AnchorPoint = Vector2.new(0, 0.5) -- Anchor to the left center
+imageButton.Position = UDim2.new(0, 10, 0.5, 0) -- Positioned on the left side, slightly inset
+imageButton.Image = "rbxassetid://18671373340" -- Your new image ID
+imageButton.Parent = screenGui
 
-    -- Create and configure UIStroke to add a red border
-    local uiStroke = Instance.new("UIStroke")
-    uiStroke.Thickness = 2 -- Thickness of the border
-    uiStroke.Color = Color3.fromRGB(255, 0, 0) -- Red color
-    uiStroke.Parent = imageButton
+-- Create and configure UICorner to make the button slightly rounded
+local uiCorner = Instance.new("UICorner")
+uiCorner.CornerRadius = UDim.new(0.2, 0) -- Slightly rounded corners
+uiCorner.Parent = imageButton
 
-    local toggleState = false
-    local function onButtonClick()
-        if toggleState == false then
-            if gethui():FindFirstChild("Orion") then
-                gethui().Orion.Enabled = not gethui().Orion.Enabled
-            end
-            UIHidden = true
-        else
-            toggleState = false
-            if gethui():FindFirstChild("Orion") then
-                gethui().Orion.Enabled = not gethui().Orion.Enabled
-            end
-        end
+-- Create and configure UIStroke to add a Red border
+local uiStroke = Instance.new("UIStroke")
+uiStroke.Thickness = 2 -- Thickness of the border
+uiStroke.Color = Color3.fromRGB(255, 0, 0) -- Red color
+uiStroke.Parent = imageButton
+
+local toggleState = false
+local function onButtonClick()
+    if toggleState == false then
+        if gethui():FindFirstChild("Orion") then
+    gethui().Orion.Enabled = not gethui().Orion.Enabled
+end
+		UIHidden = true
+    else
+        toggleState = false
+        if gethui():FindFirstChild("Orion") then
+    gethui().Orion.Enabled = not gethui().Orion.Enabled
+end
     end
-
-    -- Connect the button click event to the function
-    imageButton.MouseButton1Click:Connect(onButtonClick)
 end
 
--- Create the button for the first time
-createButton()
-
--- Recreate the button whenever the character is added (reset)
-local player = game.Players.LocalPlayer
-player.CharacterAdded:Connect(function()
-    createButton()
-end)
+-- Connect the button click event to the function
+imageButton.MouseButton1Click:Connect(onButtonClick)
 
 print("Script executed, by PlayerExploits...")
 
@@ -130,12 +122,39 @@ local coolthingy = Tab:AddSection({
 	Name = "_________________________________________________________________________"
 })
 
--- Status section in Home Tab
-local status = Tab:AddSection({
+local StatusSection = Tab:AddSection({
     Name = "Status"
 })
 
-Tab:AddLabel("Coming Soon!")
+local player = game.Players.LocalPlayer
+local username = player.Name
+local displayName = player.DisplayName
+local userId = player.UserId
+local accountAge = player.AccountAge
+
+-- Get the current game's name and ID
+local gameName
+local success, result = pcall(function()
+    return game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
+end)
+if success then
+    gameName = result
+else
+    gameName = "Unknown"
+end
+
+local gameId = game.PlaceId
+
+-- Get the number of players currently in the server
+local playersInServer = #game.Players:GetPlayers()
+
+StatusSection:AddLabel("Username: " .. username)
+StatusSection:AddLabel("Display Name: " .. displayName)
+StatusSection:AddLabel("User ID: " .. userId)
+StatusSection:AddLabel("Account Age: " .. accountAge .. " days")
+StatusSection:AddLabel("Currently Playing: " .. gameName)
+StatusSection:AddLabel("Game ID: " .. gameId)
+StatusSection:AddLabel("Players in Server: " .. playersInServer)
 
 local coolthingy2 = Tab:AddSection({
 	Name = "_________________________________________________________________________"
@@ -161,8 +180,6 @@ Tab:AddLabel("Added Other")
 Tab:AddLabel("Added Universal")
 Tab:AddLabel("Added Games")
 Tab:AddLabel("Added Filtering Enabled")
-Tab:AddLabel("Added Toggle UI")
-Tab:AddLabel("Added Transparency Of The UI")
 
 local coolthingy5 = Tab:AddSection({
 	Name = "_________________________________________________________________________"
@@ -433,7 +450,7 @@ local Section2 = FE:AddSection({
 
 local ScriptHubs = ECAX:MakeTab({
 	Name = "Scripthubs",
-	Icon = "scriptlist",
+	Icon = "rbxassetid://18671619379",
 	PremiumOnly = false
 })
 
@@ -453,4 +470,33 @@ ScriptHubs:AddButton({
 	Callback = function()
       		loadstring(game:HttpGet("https://raw.githubusercontent.com/RScripter/ORION-BLUE-THEME/main/Scripthub/Sans%20hub"))()
   	end    
+})
+
+local executor = ECAX:MakeTab({
+    Name = "executor",
+    Icon = "rbxassetid://18671373340",
+    PremiumOnly = false
+})
+
+local scriptText = ""
+
+executor:AddTextbox({
+    Name = "Input Textbox",
+    Default = "",
+    TextDisappear = false,
+    Callback = function(value)
+        scriptText = value
+    end
+})
+
+executor:AddButton({
+    Name = "Execute",
+    Callback = function()
+        local success, err = pcall(function()
+            loadstring(scriptText)()
+        end)
+        if not success then
+            print("Error executing script: " .. err)
+        end
+    end
 })
