@@ -484,7 +484,7 @@ local executor = ECAX:MakeTab({
 local scriptText = ""
 
 executor:AddTextbox({
-    Name = "Input Textbox",
+    Name = "executor",
     Default = "",
     TextDisappear = false,
     Callback = function(value)
