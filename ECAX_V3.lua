@@ -46,51 +46,47 @@ end
 -- Connect the button click event to the function
 imageButton.MouseButton1Click:Connect(onButtonClick)
 
--- Create a ScreenGui and ImageButton if not already created
 local player = game.Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
+local userInputService = game:GetService("UserInputService")
 
--- Create and configure ScreenGui
-local screenGui = Instance.new("ScreenGui")
-screenGui.Name = "LeftSideToggleButtonGui"
-screenGui.Parent = playerGui
+-- Check if the user is on a mobile device
+if userInputService.TouchEnabled and not userInputService.KeyboardEnabled then
+    -- Create and configure ScreenGui
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.Name = "LeftSideToggleButtonGui"
+    screenGui.Parent = playerGui
 
--- Create and configure ImageButton
-local imageButton = Instance.new("ImageButton")
-imageButton.Size = UDim2.new(0, 50, 0, 50) -- Smaller size for the button
-imageButton.AnchorPoint = Vector2.new(0, 0.5) -- Anchor to the left center
-imageButton.Position = UDim2.new(0, 10, 0.5, 0) -- Positioned on the left side, slightly inset
-imageButton.Image = "rbxassetid://18671373340" -- Your new image ID
-imageButton.Parent = screenGui
+    -- Create and configure ImageButton
+    local imageButton = Instance.new("ImageButton")
+    imageButton.Size = UDim2.new(0, 50, 0, 50) -- Smaller size for the button
+    imageButton.AnchorPoint = Vector2.new(0, 0.5) -- Anchor to the left center
+    imageButton.Position = UDim2.new(0, 10, 0.5, 0) -- Positioned on the left side, slightly inset
+    imageButton.Image = "rbxassetid://18671373340" -- Your new image ID
+    imageButton.Parent = screenGui
 
--- Create and configure UICorner to make the button slightly rounded
-local uiCorner = Instance.new("UICorner")
-uiCorner.CornerRadius = UDim.new(0.2, 0) -- Slightly rounded corners
-uiCorner.Parent = imageButton
+    -- Create and configure UICorner to make the button slightly rounded
+    local uiCorner = Instance.new("UICorner")
+    uiCorner.CornerRadius = UDim.new(0.2, 0) -- Slightly rounded corners
+    uiCorner.Parent = imageButton
 
--- Create and configure UIStroke to add a Red border
-local uiStroke = Instance.new("UIStroke")
-uiStroke.Thickness = 2 -- Thickness of the border
-uiStroke.Color = Color3.fromRGB(255, 0, 0) -- Red color
-uiStroke.Parent = imageButton
+    -- Create and configure UIStroke to add a Red border
+    local uiStroke = Instance.new("UIStroke")
+    uiStroke.Thickness = 2 -- Thickness of the border
+    uiStroke.Color = Color3.fromRGB(255, 0, 0) -- Red color
+    uiStroke.Parent = imageButton
 
-local toggleState = false
-local function onButtonClick()
-    if toggleState == false then
+    local toggleState = false
+    local function onButtonClick()
         if gethui():FindFirstChild("Orion") then
-    gethui().Orion.Enabled = not gethui().Orion.Enabled
-end
-		UIHidden = true
-    else
-        toggleState = false
-        if gethui():FindFirstChild("Orion") then
-    gethui().Orion.Enabled = not gethui().Orion.Enabled
-end
+            toggleState = not toggleState
+            gethui().Orion.Enabled = toggleState
+        end
     end
-end
 
--- Connect the button click event to the function
-imageButton.MouseButton1Click:Connect(onButtonClick)
+    -- Connect the button click event to the function
+    imageButton.MouseButton1Click:Connect(onButtonClick)
+end
 
 print("Script executed, by PlayerExploits...")
 
