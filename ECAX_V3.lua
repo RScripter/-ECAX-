@@ -54,17 +54,6 @@ end
 -- Connect the button click event to the function
 imageButton.MouseButton1Click:Connect(onButtonClick)
 
-local player = game.Players.LocalPlayer
-local playerGui = player:WaitForChild("PlayerGui")
-local userInputService = game:GetService("UserInputService")
-
--- Check if the user is on a mobile device
-if userInputService.TouchEnabled and not userInputService.KeyboardEnabled then
-    -- Create and configure ScreenGui
-    local screenGui = Instance.new("ScreenGui")
-    screenGui.Name = "LeftSideToggleButtonGui"
-    screenGui.Parent = playerGui
-
     -- Create and configure ImageButton
     local imageButton = Instance.new("ImageButton")
     imageButton.Size = UDim2.new(0, 50, 0, 50) -- Smaller size for the button
