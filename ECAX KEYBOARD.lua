@@ -21,7 +21,7 @@ G2L["2"]["Name"] = [[Main]];
 
 -- StarterGui.DeltaKeyboard.Main.UIStroke
 G2L["3"] = Instance.new("UIStroke", G2L["2"]);
-G2L["3"]["Color"] = Color3.fromRGB(158, 0, 255);
+G2L["3"]["Color"] = Color3.fromRGB(255, 0, 0);
 
 -- StarterGui.DeltaKeyboard.Main.Background
 G2L["4"] = Instance.new("Frame", G2L["2"]);
