@@ -523,3 +523,16 @@ executor:AddButton({
         end
     end
 })
+
+local Me = ECAX:MakeTab({
+	Name = "By Me",
+	Icon = "rbxassetid://18763805990",
+	PremiumOnly = false
+})
+
+Me:AddButton({
+	Name = "Keyboard",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/RScripter/-ECAX-/main/ECAX%20KEYBOARD.lua"))()
+  	end    
+})
