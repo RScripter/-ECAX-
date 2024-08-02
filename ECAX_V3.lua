@@ -94,7 +94,6 @@ if isMobile then
 end
 
 print("Script executed, by PlayerExploits...")
-end)
 
 -- Load the library
 local ECAX = loadstring(game:HttpGet("https://raw.githubusercontent.com/RScripter/-ECAX-/main/OrionRed.lua"))()
