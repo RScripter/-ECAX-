@@ -1,11 +1,11 @@
-# Documentation
+## Documentation
 
-## Get the Library
+### Get the Library
 ```lua
 local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/RScripter/-ECAX-/main/source2.lua"))()
 ```
 
-## Create the GUI
+### Create the GUI
 ```lua
 local GUI = Mercury:Create{
     Name = "Mercury",
@@ -15,7 +15,7 @@ local GUI = Mercury:Create{
 }
 ```
 
-## Tabs
+### Tabs
 ```lua
 local Tab = GUI:Tab{
 	Name = "New Tab",
@@ -23,7 +23,7 @@ local Tab = GUI:Tab{
 }
 ```
 
-## Buttons
+### Buttons
 ```lua
 Tab:Button{
 	Name = "Button",
@@ -32,7 +32,7 @@ Tab:Button{
 }
 ```
 
-## Toggles
+### Toggles
 ```lua
 Tab:Toggle{
 	Name = "Toggle",
@@ -42,7 +42,7 @@ Tab:Toggle{
 }
 ```
 
-## Textboxes
+### Textboxes
 ```lua
 Tab:Textbox{
 	Name = "Textbox",
@@ -50,7 +50,7 @@ Tab:Textbox{
 }
 ```
 
-## Dropdowns
+### Dropdowns
 ```lua
 local MyDropdown = Tab:Dropdown{
 	Name = "Dropdown",
