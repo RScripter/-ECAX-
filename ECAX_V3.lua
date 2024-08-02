@@ -3,9 +3,6 @@ local UserInputService = game:GetService("UserInputService")
 local isPC = (UserInputService.TouchEnabled == false) and (UserInputService.KeyboardEnabled == true)
 local isMobile = UserInputService.TouchEnabled and not UserInputService.KeyboardEnabled
 
-if isPC then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/RScripter/-ECAX-/main/ECAX_V3_PC.lua"))()
-elseif isMobile then
 -- Create ScreenGui and ImageButton if not already created
 local player = game.Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
@@ -53,7 +50,7 @@ end
 
 -- Connect the button click event to the function
 imageButton.MouseButton1Click:Connect(onButtonClick)
-
+if isMobile then
     -- Create and configure ImageButton
     local imageButton = Instance.new("ImageButton")
     imageButton.Size = UDim2.new(0, 50, 0, 50) -- Smaller size for the button
@@ -86,6 +83,7 @@ imageButton.MouseButton1Click:Connect(onButtonClick)
 end
 
 print("Script executed, by PlayerExploits...")
+end)
 
 -- Load the library
 local ECAX = loadstring(game:HttpGet("https://raw.githubusercontent.com/RScripter/-ECAX-/main/OrionRed.lua"))()
