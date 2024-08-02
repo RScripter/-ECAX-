@@ -3,16 +3,16 @@ local UserInputService = game:GetService("UserInputService")
 local isPC = (UserInputService.TouchEnabled == false) and (UserInputService.KeyboardEnabled == true)
 local isMobile = UserInputService.TouchEnabled and not UserInputService.KeyboardEnabled
 
-local function onKeyPress(input, gameProcessedEvent)
-    -- Check if the key pressed is "T"
-    if input.KeyCode == Enum.KeyCode.T then
-                if gethui():FindFirstChild("Orion") then
-            toggleState = not toggleState
-            gethui().Orion.Enabled = toggleState
-        end
-  end
+local UserInputService = game:GetService("UserInputService")
+
+UserInputService.InputBegan:Connect(function(input, gameProcessed)
+    if not gameProcessed and input.KeyCode == Enum.KeyCode.T then
+            if gethui():FindFirstChild("Orion") then
+        gethui().Orion.Enabled = not gethui().Orion.Enabled
     end
 end
+    end
+end)
 
 -- Create ScreenGui and ImageButton if not already created
 local player = game.Players.LocalPlayer
