@@ -88,11 +88,9 @@ if isMobile then
             gethui().Orion.Enabled = toggleState
         end
     end
-
     -- Connect the button click event to the function
     imageButton.MouseButton1Click:Connect(onButtonClick)
 end
-
 print("Script executed, by PlayerExploits...")
 
 -- Load the library
