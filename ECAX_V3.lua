@@ -1,8 +1,3 @@
--- Check if the player is on PC
-local UserInputService = game:GetService("UserInputService")
-local isPC = (UserInputService.TouchEnabled == false) and (UserInputService.KeyboardEnabled == true)
-local isMobile = UserInputService.TouchEnabled and not UserInputService.KeyboardEnabled
-
 -- Create ScreenGui and ImageButton if not already created
 local player = game.Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
@@ -50,37 +45,51 @@ end
 
 -- Connect the button click event to the function
 imageButton.MouseButton1Click:Connect(onButtonClick)
+
+-- Create ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+-- Check if the device is mobile
+local isMobile = game:GetService("UserInputService").TouchEnabled
+
 if isMobile then
-    -- Create and configure ImageButton
+    -- Create ImageButton
     local imageButton = Instance.new("ImageButton")
-    imageButton.Size = UDim2.new(0, 50, 0, 50) -- Smaller size for the button
-    imageButton.AnchorPoint = Vector2.new(0, 0.5) -- Anchor to the left center
-    imageButton.Position = UDim2.new(0, 10, 0.5, 0) -- Positioned on the left side, slightly inset
-    imageButton.Image = "rbxassetid://18671373340" -- Your new image ID
+    imageButton.Size = UDim2.new(0, 50, 0, 50) -- Set size of the button
+    imageButton.Position = UDim2.new(1, -60, 0.5, -25) -- Position on the right side, centered vertically
+    imageButton.Image = "rbxassetid://18671373340" -- Set the new image asset ID here
     imageButton.Parent = screenGui
 
-    -- Create and configure UICorner to make the button slightly rounded
+    -- Create UICorner for squircle shape
     local uiCorner = Instance.new("UICorner")
-    uiCorner.CornerRadius = UDim.new(0.2, 0) -- Slightly rounded corners
+    uiCorner.CornerRadius = UDim.new(0.2, 0) -- Adjust the CornerRadius to make a squircle shape
     uiCorner.Parent = imageButton
 
-    -- Create and configure UIStroke to add a Red border
+    -- Create UIStroke
     local uiStroke = Instance.new("UIStroke")
-    uiStroke.Thickness = 2 -- Thickness of the border
+    uiStroke.Thickness = 2
     uiStroke.Color = Color3.fromRGB(255, 0, 0) -- Red color
     uiStroke.Parent = imageButton
 
-    local toggleState = false
-    local function onButtonClick()
-        if gethui():FindFirstChild("Orion") then
-            toggleState = not toggleState
-            gethui().Orion.Enabled = toggleState
+    -- Button click function
+    imageButton.MouseButton1Click:Connect(function()
+        local orion = gethui():FindFirstChild("Orion")
+        if orion then
+            orion.Enabled = not orion.Enabled
+        end
+    end)
+end
+
+-- Key press function for toggling Orion GUI
+game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessed)
+    if not gameProcessed and input.KeyCode == Enum.KeyCode.T then
+        local orion = gethui():FindFirstChild("Orion")
+        if orion then
+            orion.Enabled = not orion.Enabled
         end
     end
-    -- Connect the button click event to the function
-    imageButton.MouseButton1Click:Connect(onButtonClick)
-end
-print("Script executed, by PlayerExploits...")
+end)
 
 -- Load the library
 local ECAX = loadstring(game:HttpGet("https://raw.githubusercontent.com/RScripter/-ECAX-/main/OrionRed.lua"))()
@@ -510,15 +519,27 @@ executor:AddButton({
     end
 })
 
-local Me = ECAX:MakeTab({
+local MyScripts = ECAX:MakeTab({
 	Name = "By Me",
 	Icon = "rbxassetid://18763805990",
 	PremiumOnly = false
 })
 
-Me:AddButton({
-	Name = "Keyboard",
+local me = MyScripts:AddSection({
+	Name = "By PlayerExploits"
+})
+
+
+Myscripts:AddButton({
+	Name = "KEYBOARD - ECAX",
 	Callback = function()
       		loadstring(game:HttpGet("https://raw.githubusercontent.com/RScripter/-ECAX-/main/ECAX%20KEYBOARD.lua"))()
+  	end    
+})
+
+Myscripts:AddButton({
+	Name = "CONSOLE",
+	Callback = function()
+      		loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Console-Frame-and-Toggle-Console-16609"))()
   	end    
 })
