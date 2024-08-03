@@ -530,14 +530,14 @@ local me = MyScripts:AddSection({
 })
 
 
-Myscripts:AddButton({
+MyScripts:AddButton({
 	Name = "KEYBOARD - ECAX",
 	Callback = function()
       		loadstring(game:HttpGet("https://raw.githubusercontent.com/RScripter/-ECAX-/main/ECAX%20KEYBOARD.lua"))()
   	end    
 })
 
-Myscripts:AddButton({
+MyScripts:AddButton({
 	Name = "CONSOLE",
 	Callback = function()
       		loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Console-Frame-and-Toggle-Console-16609"))()
