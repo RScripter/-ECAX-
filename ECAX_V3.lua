@@ -410,6 +410,17 @@ Tab3: AddButton({
   	end    
 })
 
+local Section = Tab3:AddSection({
+	Name = "TSBG - The Strongest Battlegrounds"
+})
+
+Tab3:AddButton({
+	Name = "Animation Gui - betless-hub-x - I0ckerv5",
+	Callback = function()
+      		loadstring(game:HttpGet("https://rentry.org/betless-hub-x/raw"))()
+  	end    
+})
+
 local FE = ECAX:MakeTab({
    Name = "Filtering Enabled",
    Icon = "filteringenabled",
