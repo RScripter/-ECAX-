@@ -81,6 +81,15 @@ if isMobile then
     end)
 end
 
+
+
+
+
+-- Load the library
+local ECAX = loadstring(game:HttpGet("https://raw.githubusercontent.com/RScripter/-ECAX-/main/OrionRed.lua"))()
+
+local ECAX = ECAX:MakeWindow({Name = "ECAX V3", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
 -- Key press function for toggling Orion GUI
 game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessed)
     if not gameProcessed and input.KeyCode == Enum.KeyCode.T then
@@ -90,11 +99,6 @@ game:GetService("UserInputService").InputBegan:Connect(function(input, gameProce
         end
     end
 end)
-
--- Load the library
-local ECAX = loadstring(game:HttpGet("https://raw.githubusercontent.com/RScripter/-ECAX-/main/OrionRed.lua"))()
-
-local ECAX = ECAX:MakeWindow({Name = "ECAX V3", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 
 
 -- transparent looks
