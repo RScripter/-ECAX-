@@ -180,6 +180,7 @@ Tab:AddLabel("Added Filtering Enabled")
 Tab:AddLabel("Added Toggle UI")
 Tab:AddLabel("Added Transparency")
 Tab:AddLabel("Added Executor")
+Tab:AddLabel("Added By Me/By PlayerExploits")
 
 local coolthingy5 = Tab:AddSection({
 	Name = "_________________________________________________________________________"
