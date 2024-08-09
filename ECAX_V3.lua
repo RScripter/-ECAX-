@@ -165,7 +165,15 @@ local coolthingy4 = Tab:AddSection({
 	Name = "Credits"
 })
 
-Tab:AddLabel("by playerexploits on youtube link: m.youtube.com/@playerexploits")
+Tab:AddButton({
+	Name = "PlayerExploits's youtube",
+	Callback = function()
+      		setclipboard("m.youtube.com")
+  	end    
+}) 
+
+Tab:AddLabel("ChatGPT")
+
 
 local coolthingy3 = Tab:AddSection({
 	Name = "_________________________________________________________________________"
